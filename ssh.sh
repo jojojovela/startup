@@ -1,0 +1,1 @@
+ssh -i encyclopedia.pem ubuntu@votingphoto.click
