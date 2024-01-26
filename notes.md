@@ -15,4 +15,3 @@ It is important to keep the same public IP address so that you, and others, can 
     . Hello World
  - all elements can have attributes associated with them; like <html lang="en">
  
- 
