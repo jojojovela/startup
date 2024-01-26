@@ -14,4 +14,6 @@ It is important to keep the same public IP address so that you, and others, can 
   * body
     . Hello World
  - all elements can have attributes associated with them; like <html lang="en">
+ - headings and heading numbers can cause it to be smaller.
+ - anchor tag references has two types, absolute and relative. Relative is better because more flexibility and don't have to hardcode the url like absolute would.
  
