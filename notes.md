@@ -14,4 +14,5 @@ It is important to keep the same public IP address so that you, and others, can 
   * body
     . Hello World
  - all elements can have attributes associated with them; like <html lang="en">
- 
+ - img tag has an alt that descirbes the image and then a source with basically a link.
+ - 
