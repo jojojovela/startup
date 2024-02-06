@@ -13,17 +13,56 @@
       <h1>Main Feed</h1>
 
       <!-- Navigation elements -->
-      <nav>
-        <!-- Menu is a semantic alternative to <ul> that represents an interaction -->
-        <menu>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="index2.html">Play</a></li>
-          <li><a href="index3.html">Scores</a></li>
-        </menu>
-      </nav>
+      <table>
+        <tr>
+          <td><form action="/upload" method="post" enctype="multipart/form-data">
+            <label for="fileInput">Choose a file:</label>
+            <input type="file" id="fileInput" name="fileInput"></td>
+            <br>
+            <input type="submit" value="Upload">
+          </form>
+          <td><a href="index2.html">Main Feed</a>          </td>
+          <td><a href="index3.html">Notifications</a></td>
+        </tr>
+      </table>
 
       <!-- Since we don't have the ability to style we use old style HTML to give some visual formatting -->
       <hr />
+      <table border="1">
+        <tr>
+          <td>
+            <img src="https://images.unsplash.com/photo-1525134479668-1bee5c7c6845?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBvcnRyYWl0c3xlbnwwfHwwfHx8MA%3D%3D" alt="Image 1" width="200">
+          </td>
+          <td>
+            <img src="https://images.unsplash.com/photo-1530785602389-07594beb8b73?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cG9ydHJhaXRzfGVufDB8fDB8fHww" alt="Image 2" width="200">
+          </td>
+          <td>
+            <img src="https://images.unsplash.com/photo-1535579710123-3c0f261c474e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image 3" width="200">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="https://images.unsplash.com/photo-1558507652-2d9626c4e67a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cG9ydHJhaXRzfGVufDB8fDB8fHww" alt="Image 4" width="200">
+          </td>
+          <td>
+            <img src="https://images.unsplash.com/photo-1572631382901-cf1a0a6087cb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHBvcnRyYWl0c3xlbnwwfHwwfHx8MA%3D%3D" alt="Image 5" width="200">
+          </td>
+          <td>
+            <img src="https://images.unsplash.com/photo-1576695444267-40cdd214f06e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHBvcnRyYWl0c3xlbnwwfHwwfHx8MA%3D%3D" alt="Image 6" width="200">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHBvcnRyYWl0c3xlbnwwfHwwfHx8MA%3D%3D" alt="Image 7" width="200">
+          </td>
+          <td>
+            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHBvcnRyYWl0c3xlbnwwfHwwfHx8MA%3D%3D" alt="Image 8" width="200">
+          </td>
+          <td>
+            <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHBvcnRyYWl0c3xlbnwwfHwwfHx8MA%3D%3D" alt="Image 9" width="200">
+          </td>
+        </tr>
+      </table>
     </header>
 
     <main>
@@ -53,53 +92,14 @@
 
       <br />
 
-      <div>
-        <table>
-          <tr>
-            <td>
-              <button>
-                <svg aria-hidden="true" viewBox="0 0 100 100" height="100" width="100">
-                  <!-- SVG
-                    M move <to x,y>
-                    Q quadratic curve <control point x,y> <to x,y>
-                -->
-                  <path d="M 95,5 95,95 5,95 Q 5,5 95,5" fill="green" />
-                </svg>
-              </button>
-            </td>
-            <td>
-              <button>
-                <svg aria-hidden="true" viewBox="0 0 100 100" height="100" width="100">
-                  <path d="M5,5 5,95 95,95 Q 95,5 5,5" fill="red" />
-                </svg>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button>
-                <svg aria-hidden="true" viewBox="0 0 100 100" height="100" width="100">
-                  <path d="M5,5 95,5 95,95 Q 5,95 5,5" fill="blue" />
-                </svg>
-              </button>
-            </td>
-            <td>
-              <button>
-                <svg aria-hidden="true" viewBox="0 0 100 100" height="100" width="100">
-                  <path d="M95,5 5,5 5,95 Q 95,95 95,5" fill="yellow" />
-                </svg>
-              </button>
-            </td>
-          </tr>
-        </table>
-      </div>
+      
     </main>
 
     <footer>
       <hr />
-      <span class="text-reset">Author Name(s)</span>
+      <span class="text-reset">Josimar Vela</span>
       <br />
-      <a href="https://github.com/webprogramming260/simon-html">GitHub</a>
+      <a href="https://github.com/jojojovela/startup">GitHub</a>
     </footer>
   </body>
 </html>
