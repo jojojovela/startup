@@ -31,6 +31,14 @@ The following is how I will use the technologies:
   - Share your picture
 - Authentication/DG/Login: Able to recognize and save users and votes in database. It will be able to register and login people. Also store comments in database.
 - Websocket: It will notify people when they had a vote on one of their images and when people comment.
-  
+ # CSS Startup Deliverables
+For this deliverable I properly styled the application into its final appearance.
+
+- Header, footer, and main content body - all there and styled appropriately 
+- Navigation elements - I added an underline might chnage later on and the hyperlinks work and are styled.
+- Responsive to window resizing - My app looks great on all window sizes and devices
+- Application elements - I was able to use the whitespace appropriately and a good use of color and contrast
+- Application text content - fonts go well with one another 
+- Application images - used sample images to portray how it would look and was able to curve the images as well to give more style
 
 
