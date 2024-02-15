@@ -1,5 +1,5 @@
 body {
-    font-family: monospace;
+    font-family: Georgia;
     font-size: 20px;
     background-color: white;
     margin: 0;
@@ -9,7 +9,7 @@ body {
 main {
     max-width: 400px;
     margin: 50px auto;
-    background-color: #7D8CA3;
+    background-color: #E7E8D1;
     border-radius: 8px;
     padding: 20px;
 }
@@ -37,7 +37,7 @@ input {
 }
 
 button {
-    background-color: red;
+    background-color: #B85042;
     color: #25171A;
     padding: 10px;
     border: none;

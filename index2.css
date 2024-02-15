@@ -1,6 +1,6 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #7D8CA3;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: #A7BEAE;
     margin: 0;
     padding: 0;
 }
@@ -8,29 +8,33 @@ body {
 header {
     max-width: 850px;
     margin: 50px auto;
-    background-color: #fff;
+    background-color: #E7E8D1;
     border-radius: 20px;
     padding: 20px;
 }
 
 h1 {
     text-align: center;
-    color: #333;
+    color: #B85042;
     font-size: 50px;
-    font-family: monospace;
+    font-family: Georgia;
     text-decoration: underline;
+}
+p {
+    font-family: monospace;
+    color: #B85042;
 }
 
 table {
     width: 100%;
     margin-top: 20px;
-    border-collapse: separate;
+    border-collapse: collapse;
     font-size: 15px;
-    font-family: Right Serif Mono;
+    font-family: monospace;
 }
 
 table, th, td {
-    border: 2px solid #ddd;
+    border: 3px solid #B85042;
 }
 
 th, td {
@@ -54,6 +58,6 @@ footer {
 hr {
     border: 0;
     height: 1px;
-    background-color: red;
+    background-color: #B85042;
     margin: 20px 0;
 }
