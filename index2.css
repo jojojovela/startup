@@ -18,12 +18,15 @@ h1 {
     color: #333;
     font-size: 50px;
     font-family: monospace;
+    text-decoration: underline;
 }
 
 table {
     width: 100%;
     margin-top: 20px;
     border-collapse: separate;
+    font-size: 15px;
+    font-family: Right Serif Mono;
 }
 
 table, th, td {
@@ -31,23 +34,26 @@ table, th, td {
 }
 
 th, td {
-    padding: 15px;
+    padding: 17px;
     text-align: center;
 }
 
 img {
     max-width: 100%;
     height: auto;
+    border-radius: 10px;
 }
 
 footer {
     margin-top: 20px;
     text-align: center;
+    font-family: monospace;
+    font-size: 25px;
 }
 
 hr {
     border: 0;
     height: 1px;
-    background-color: #ccc;
+    background-color: red;
     margin: 20px 0;
 }
