@@ -25,3 +25,9 @@ For this deliverable I properly styled the application into its final appearance
 - Application elements - I was able to use the whitespace appropriately and a good use of color and contrast
 - Application text content - fonts go well with one another 
 - Application images - used sample images to portray how it would look and was able to curve the images as well to give more style
+
+  # Layers of Networks
+  - Link: Physical connections
+  - Internet: Establishing connections
+  - Transport: Moving connection information packets
+  - Application: Functionality like web browsing
