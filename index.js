@@ -6,7 +6,6 @@ function validateForm() {
         alert("Please fill in all fields");
         return false;
     }
-    // Additional validation logic can be added here
 
     return true;
 }
