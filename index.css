@@ -4,10 +4,13 @@ body {
     background-color: white;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
 main {
-    max-width: 400px;
+    max-width: 800px; /* Adjust the max-width to make the body wider */
     margin: 50px auto;
     background-color: #E7E8D1;
     border-radius: 8px;
@@ -18,6 +21,9 @@ h1 {
     text-align: center;
     color: #020300;
 }
+
+/* ... (rest of your CSS remains the same) ... */
+
 
 form {
     display: flex;
@@ -62,8 +68,10 @@ a:hover {
 }
 
 footer {
-    margin-top: 20px;
+    margin-top: auto;
     text-align: center;
+    background-color: white; 
+    padding: 10px; 
 }
 
 hr {

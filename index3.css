@@ -1,105 +1,115 @@
-  body, table {
-    margin: 0;
-    padding: 0;
-  }
-  h1 {
-    text-align: center;
-    text-decoration: underline;
-    color:#B85042;
-    font-family: "Raleway", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-  }
-  p {
-    text-align: center;
-    margin-top: 10px;
-    font-family: monospace;
-  }
-  body {
-    background-color: #f4f4f4;
-    color: #333;
-  }
-  hr {
-    border: 0;
-    height: 1px;
-    background-color: #B85042;
-  }
-  header {
-    background-color: #E7E8D1;
-    color: black;
-    padding: 10px;
-  }
-  
-  header h1 {
-    margin: 0;
-  }
-  
-  table {
-    width: 100%;
-    margin-top: 0;
-    border-collapse: collapse;
-    color: #B85042;
-  }
-  
-  table, th, td {
-    border: 0px solid #B85042;
-  }
-  
-  th, td {
-    padding: 10px;
-    text-align: left;
-    font-family: "Raleway", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    color: black;
-  }
-  #Login, #Main, #Notifications {
-    text-align: center;
-    }
-  thead {
-    background-color: #E7E8D1;
-    color: #B85042;
-  }
-  
-  main {
-    padding: 20px;
-  }
-  
-  footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #E7E8D1;
-    color: #78bc90;
-    font-weight: 600;
-    font-family: monospace;
-    font-size: 20px;
-  }
-  
-  a {
-    color: #78bc90;
-    font-family: Georgia;
-    text-align: center;
-    font-weight: bolder;
+body, table {
+  margin: 0;
+  padding: 0;
+}
 
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
+h1 {
+  text-align: center;
+  text-decoration: underline;
+  color: #B85042;
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
 
-  .notification {
-    border: 1px solid #B85042;
-    background-color: #E7E8D1;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-  }
-  
-  .notification p {
-    margin: 0;
-    font-family: "Raleway", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    color: #B85042;
-  }
-  
+p {
+  text-align: center;
+  margin-top: 10px;
+  font-family: monospace;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the body takes at least the full height of the viewport */
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-color: #B85042;
+}
+
+header {
+  background-color: #E7E8D1;
+  color: black;
+  padding: 10px;
+}
+
+header h1 {
+  margin: 0;
+}
+
+table {
+  width: 100%;
+  margin-top: 0;
+  border-collapse: collapse;
+  color: #B85042;
+}
+
+table, th, td {
+  border: 0px solid #B85042;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  color: black;
+}
+
+#Login, #Main, #Notifications {
+  text-align: center;
+}
+
+thead {
+  background-color: #E7E8D1;
+  color: #B85042;
+}
+
+main {
+  flex: 1; /* Make the main content area flexible to take up the remaining space */
+  padding: 20px;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #E7E8D1;
+  color: #78bc90;
+  font-weight: 600;
+  font-family: monospace;
+  font-size: 20px;
+  margin-top: auto; /* Push the footer to the bottom */
+}
+
+a {
+  color: #78bc90;
+  font-family: Georgia;
+  text-align: center;
+  font-weight: bolder;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.notification {
+  border: 1px solid #B85042;
+  background-color: #E7E8D1;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.notification p {
+  margin: 0;
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  color: #B85042;
+}
