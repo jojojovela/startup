@@ -4,7 +4,6 @@ var currentCell = 0;
 function uploadImage() {
   var fileInput = document.getElementById("fileInput");
   var imageGrid = document.getElementById("imageGrid");
-  var notificationsContainer = document.getElementById("notificationsContainer");
 
   if (fileInput.files.length > 0) {
     if (currentCell >= 3) {
@@ -17,7 +16,7 @@ function uploadImage() {
     newImage.alt = "Uploaded Image";
     newImage.className = "uploaded-image";
     newImage.onclick = function () {
-      handleImageClick(newImage.src, notificationsContainer);
+      handleImageClick(newImage.src);
     };
 
     var newCell = document.createElement("td");
@@ -34,8 +33,8 @@ function uploadImage() {
 
     currentCell++;
 
-    // Update the notifications on the same page
-    updateNotifications("A photo has been voted", notificationsContainer);
+    // Update the notifications using localStorage
+    updateNotifications("A photo has been voted");
 
     fileInput.value = "";
   } else {
@@ -43,23 +42,29 @@ function uploadImage() {
   }
 }
 
-function handleImageClick(imageSrc, notificationsContainer) {
+function handleImageClick(imageSrc) {
   // Additional functionality for handling image clicks can be added here
   console.log("Image clicked:", imageSrc);
 
-  // Update the notifications on the same page
-  updateNotifications("You clicked on the image: " + imageSrc, notificationsContainer);
+  // Save the clicked image information in localStorage
+  saveClickedImage(imageSrc);
 }
 
-function updateNotifications(message, notificationsContainer) {
-  // Create elements for the notification
-  var notificationElement = document.createElement("div");
-  notificationElement.className = "notification";
+function updateNotifications(message) {
+  // Get existing notifications from localStorage
+  var notifications = JSON.parse(localStorage.getItem('notifications')) || [];
 
-  var notificationText = document.createElement("p");
-  notificationText.textContent = message;
+  // Add the new notification
+  notifications.push({
+    message: message,
+    timestamp: new Date().toISOString(),
+  });
 
-  // Append elements to the container
-  notificationElement.appendChild(notificationText);
-  notificationsContainer.appendChild(notificationElement);
+  // Save updated notifications back to localStorage
+  localStorage.setItem('notifications', JSON.stringify(notifications));
+}
+
+function saveClickedImage(imageSrc) {
+  // Save the clicked image information in localStorage
+  localStorage.setItem('clickedImage', imageSrc);
 }
