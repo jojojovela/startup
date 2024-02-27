@@ -64,13 +64,13 @@ hr {
 .image-row {
     display: flex;
     justify-content: space-around;
-    margin-bottom: 20px; /* Adjust as needed */
+    margin-bottom: 20px; 
   }
   
   .uploaded-image {
     max-width: 100%;
     height: auto;
-    max-height: 150px; /* Adjust as needed */
+    max-height: 250px; 
     border-radius: 10px;
-    margin-bottom: 10px; /* Adjust as needed */
+    margin-bottom: 10px; 
   }
