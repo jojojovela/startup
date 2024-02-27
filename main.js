@@ -33,7 +33,7 @@ function uploadImage() {
 
     currentCell++;
 
-    // Update the notifications using localStorage
+    // Update the notifications on the same page
     updateNotifications("A photo has been voted");
 
     fileInput.value = "";
@@ -43,28 +43,23 @@ function uploadImage() {
 }
 
 function handleImageClick(imageSrc) {
-  // Additional functionality for handling image clicks can be added here
-  console.log("Image clicked:", imageSrc);
-
-  // Save the clicked image information in localStorage
-  saveClickedImage(imageSrc);
+  // Save clicked image to localStorage
+  localStorage.setItem('clickedImage', imageSrc);
+  
+  // Redirect to the notifications page
+  window.location.href = 'notifications.html';
 }
 
 function updateNotifications(message) {
-  // Get existing notifications from localStorage
   var notifications = JSON.parse(localStorage.getItem('notifications')) || [];
+  var timestamp = new Date().toLocaleString();
 
-  // Add the new notification
+  // Add new notification
   notifications.push({
     message: message,
-    timestamp: new Date().toISOString(),
+    timestamp: timestamp
   });
 
-  // Save updated notifications back to localStorage
+  // Save notifications to localStorage
   localStorage.setItem('notifications', JSON.stringify(notifications));
-}
-
-function saveClickedImage(imageSrc) {
-  // Save the clicked image information in localStorage
-  localStorage.setItem('clickedImage', imageSrc);
 }
