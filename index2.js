@@ -1,45 +1,65 @@
-var currentRow = 1; // Variable to keep track of the current row
-var currentCell = 0; // Variable to keep track of the current cell in the row
+var currentRow = 1;
+var currentCell = 0;
 
 function uploadImage() {
   var fileInput = document.getElementById("fileInput");
   var imageGrid = document.getElementById("imageGrid");
+  var notificationsContainer = document.getElementById("notificationsContainer");
 
-  // Check if a file is selected
   if (fileInput.files.length > 0) {
-    // Check if a new row needs to be created
     if (currentCell >= 3) {
       currentRow++;
       currentCell = 0;
     }
 
-    // Create a new image element
     var newImage = document.createElement("img");
     newImage.src = URL.createObjectURL(fileInput.files[0]);
     newImage.alt = "Uploaded Image";
-    newImage.className = "uploaded-image"; // Add a class for styling consistency
+    newImage.className = "uploaded-image";
+    newImage.onclick = function () {
+      handleImageClick(newImage.src, notificationsContainer);
+    };
 
-    // Create a new table cell and append the image
     var newCell = document.createElement("td");
     newCell.appendChild(newImage);
 
-    // Check if a new row needs to be created in the grid
-  if (currentCell === 0) {
-    var gridRow = document.createElement("tr");
-    gridRow.id = "row" + currentRow; // Assign an id to the row for future reference
-    gridRow.className = "image-row"; // Add a class for styling consistency
-    imageGrid.appendChild(gridRow);
-  }
+    if (currentCell === 0) {
+      var gridRow = document.createElement("tr");
+      gridRow.id = "row" + currentRow;
+      gridRow.className = "image-row";
+      imageGrid.appendChild(gridRow);
+    }
 
-// Append the new cell to the grid
-document.getElementById("row" + currentRow).appendChild(newCell);
+    document.getElementById("row" + currentRow).appendChild(newCell);
 
-    // Increment the current cell
     currentCell++;
 
-    // Clear the file input for convenience
+    // Update the notifications on the same page
+    updateNotifications("A photo has been voted", notificationsContainer);
+
     fileInput.value = "";
   } else {
     alert("Please choose a file to upload.");
   }
+}
+
+function handleImageClick(imageSrc, notificationsContainer) {
+  // Additional functionality for handling image clicks can be added here
+  console.log("Image clicked:", imageSrc);
+
+  // Update the notifications on the same page
+  updateNotifications("You clicked on the image: " + imageSrc, notificationsContainer);
+}
+
+function updateNotifications(message, notificationsContainer) {
+  // Create elements for the notification
+  var notificationElement = document.createElement("div");
+  notificationElement.className = "notification";
+
+  var notificationText = document.createElement("p");
+  notificationText.textContent = message;
+
+  // Append elements to the container
+  notificationElement.appendChild(notificationText);
+  notificationsContainer.appendChild(notificationElement);
 }

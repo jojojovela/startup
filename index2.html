@@ -2,17 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- Tell browsers not to scale the viewport automatically -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Main Feed</title>
     <link rel="stylesheet" href="index2.css">
   </head>
   <body>
-    <!-- Use header, main, and footer elements to give semantic structure -->
     <header>
       <h1>Main Feed</h1>
-
-      <!-- Navigation elements -->
       <table>
         <tr>
           <td>
@@ -28,12 +24,13 @@
           <td><a href="index3.html">Notifications</a></td>
         </tr>
       </table>
-
-      <!-- Since we don't have the ability to style, we use old style HTML to give some visual formatting -->
       <hr />
       <h1>Sample images</h1>
       <p>*How the timeline would look like*</p>
       <div id="imageGrid" class="image-grid"></div>
+
+      <!-- Add this line to create the notifications container -->
+      <div id="notificationsContainer"></div>
     </header>
 
     <footer>
@@ -43,7 +40,6 @@
       <a href="https://github.com/jojojovela/startup">GitHub</a>
     </footer>
 
-    <!-- Link to the external JavaScript file -->
     <script src="index2.js"></script>
   </body>
 </html>

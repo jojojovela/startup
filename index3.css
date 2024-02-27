@@ -86,3 +86,20 @@
   a:hover {
     text-decoration: underline;
   }
+
+  .notification {
+    border: 1px solid #B85042;
+    background-color: #E7E8D1;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  .notification p {
+    margin: 0;
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color: #B85042;
+  }
+  
