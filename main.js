@@ -56,7 +56,6 @@ document.addEventListener('DOMContentLoaded', function () {
             // increments it by 1. So to uniquely identify the new image being uploaded.
             const newId = databaseData.length + 1;
             // I am creating a URL that represents the file I selected from the file input element.
-            console.log('File Name:', fileName);
             const newImageUrl = URL.createObjectURL(fileInput.files[0]);
 
             // I am adding data to the mocked database and inserting it into the DOM
