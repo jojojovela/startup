@@ -1,22 +1,17 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Load notifications from localStorage
-    loadNotifications();
-
-    // Handle messages sent from the main page
-    window.addEventListener('message', function (event) {
-        if (event.data.type === 'imageClicked') {
-            // Handle the notification as needed
-            handleImageNotification(event.data.message);
-        }
+    document.addEventListener('notificationEvent', function () {
+        // Handle the event and update notifications
+        loadNotifications();
     });
 
-    // Attach click event to the clear button
     var clearButton = document.getElementById('clearButton');
     if (clearButton) {
         clearButton.addEventListener('click', clearNotifications);
     }
+    loadNotifications();
 });
 
+// function that loads the notifications
 function loadNotifications() {
     var notificationsContainer = document.getElementById('notificationsContainer');
     notificationsContainer.innerHTML = ''; // Clear existing content
@@ -24,7 +19,6 @@ function loadNotifications() {
     // Get existing notifications from localStorage
     var notifications = JSON.parse(localStorage.getItem('notifications')) || [];
 
-    // Iterate through notifications and create elements
     notifications.forEach(function (notification) {
         var notificationElement = document.createElement('div');
         notificationElement.className = 'notification';
@@ -38,15 +32,15 @@ function loadNotifications() {
 }
 
 function clearNotifications() {
-    // Clear notifications in localStorage
+    // Clear all notifications from localStorage
     localStorage.removeItem('notifications');
 
-    // Reload the notifications
+    // Reload notifications
     loadNotifications();
 }
 
 function handleImageNotification(message) {
-    // Handle the notification for an image click
+    // this handles the notification for an image click
     var notificationsContainer = document.getElementById('notificationsContainer');
 
     var notificationElement = document.createElement('div');
@@ -58,3 +52,4 @@ function handleImageNotification(message) {
     notificationElement.appendChild(notificationText);
     notificationsContainer.appendChild(notificationElement);
 }
+
