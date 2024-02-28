@@ -5,11 +5,11 @@ body, table {
 
 h1 {
   text-align: center;
-  text-decoration: underline;
   color: #B85042;
-  font-family: "Raleway", sans-serif;
+  font-family: 'Bebas Neue', serif;
   font-optical-sizing: auto;
   font-style: normal;
+  font-size: 40px;
 }
 
 p {
@@ -82,21 +82,19 @@ footer {
   background-color: #E7E8D1;
   color: #78bc90;
   font-weight: 600;
-  font-family: monospace;
+  font-family: 'Bebas Neue';
   font-size: 20px;
   margin-top: auto; /* Push the footer to the bottom */
 }
 
 a {
   color: #78bc90;
-  font-family: Georgia;
+  font-family: 'Bebas Neue', sans-serif;
   text-align: center;
-  font-weight: bolder;
-}
-
-a:hover {
+  font-size: 30px;
   text-decoration: underline;
 }
+
 
 .notification {
   border: 1px solid #B85042;
@@ -112,4 +110,10 @@ a:hover {
   font-optical-sizing: auto;
   font-style: normal;
   color: #B85042;
+}
+
+.bebas-neue-regular {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }

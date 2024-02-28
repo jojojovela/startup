@@ -1,5 +1,5 @@
 body {
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Bebas Neue', serif;
     background-color: #A7BEAE;
     margin: 0;
     padding: 0;
@@ -17,11 +17,10 @@ h1 {
     text-align: center;
     color: #B85042;
     font-size: 50px;
-    font-family: Georgia;
-    text-decoration: underline;
+    font-family: 'Bebas Neue';
 }
 p {
-    font-family: monospace;
+    font-family: "Bebas Neue", serif;
     color: #B85042;
 }
 
@@ -51,7 +50,7 @@ img {
 footer {
     margin-top: 20px;
     text-align: center;
-    font-family: monospace;
+    font-family: 'Bebas Neue', serif;
     font-size: 25px;
 }
 
@@ -73,4 +72,16 @@ hr {
     max-height: 250px; 
     border-radius: 10px;
     margin-bottom: 10px; 
+    cursor: pointer; 
+    transition: transform 0.2s ease-in-out; /* Add a smooth transition effect */
+}
+
+.uploaded-image:hover {
+    transform: scale(1.1); /* Add a scale effect on hover */
+}
+
+.bebas-neue-regular {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
   }

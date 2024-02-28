@@ -2,6 +2,18 @@ document.addEventListener('DOMContentLoaded', function () {
   // Load notifications from localStorage
   loadNotifications();
 
+  // Handle click events on notifications
+  var notificationsContainer = document.getElementById('notificationsContainer');
+  notificationsContainer.addEventListener('click', function (event) {
+    if (event.target.tagName === 'IMG') {
+      var clickedImageId = event.target.id;
+      var clickedImageSrc = document.getElementById(clickedImageId).src;
+
+      // Handle the clicked image as needed
+      alert('Image Clicked: ' + clickedImageSrc);
+    }
+  });
+
   // Attach click event to the clear button
   var clearButton = document.getElementById('clearButton');
   if (clearButton) {
@@ -22,7 +34,7 @@ function loadNotifications() {
     notificationElement.className = 'notification';
 
     var notificationText = document.createElement('p');
-    notificationText.textContent = notification.message + ' - ' + notification.timestamp;
+    notificationText.textContent = notification.message;
 
     notificationElement.appendChild(notificationText);
     notificationsContainer.appendChild(notificationElement);

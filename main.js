@@ -15,8 +15,12 @@ function uploadImage() {
     newImage.src = URL.createObjectURL(fileInput.files[0]);
     newImage.alt = "Uploaded Image";
     newImage.className = "uploaded-image";
+
+    // Add unique ID to the image
+    newImage.id = "image" + currentRow + "-" + currentCell;
+
     newImage.onclick = function () {
-      handleImageClick(newImage.src);
+      handleImageClick(newImage.id);
     };
 
     var newCell = document.createElement("td");
@@ -34,7 +38,7 @@ function uploadImage() {
     currentCell++;
 
     // Update the notifications on the same page
-    updateNotifications("A photo has been voted");
+    updateNotifications("A photo has been uploaded", newImage.id);
 
     fileInput.value = "";
   } else {
@@ -42,22 +46,22 @@ function uploadImage() {
   }
 }
 
-function handleImageClick(imageSrc) {
-  // Save clicked image to localStorage
-  localStorage.setItem('clickedImage', imageSrc);
-  
-  // Redirect to the notifications page
-  window.location.href = 'notifications.html';
+function handleImageClick(imageId) {
+  // Save clicked image to localStorage (if needed)
+  localStorage.setItem('clickedImage', imageId);
+
+  // You can choose not to redirect to the notifications page here
+  // window.location.href = 'notifications.html';
+  sendNotification("A photo has been uploaded", imageId);
 }
 
-function updateNotifications(message) {
+function updateNotifications(message, imageId) {
   var notifications = JSON.parse(localStorage.getItem('notifications')) || [];
-  var timestamp = new Date().toLocaleString();
 
   // Add new notification
   notifications.push({
     message: message,
-    timestamp: timestamp
+    imageId: imageId
   });
 
   // Save notifications to localStorage
