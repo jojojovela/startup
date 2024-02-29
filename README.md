@@ -43,6 +43,7 @@ For this deliverable I properly styled the application into its final appearance
 
 # JavaScript Startup Deliverables
 JavaScript support for the application's interaction logic:
+- make sure put your username and fill in a temporary password in the login page.
 - JavaScript support for future login: Able to  fix my footer and was able to get the username from login page to display on main page at the top left
 - JavaScript support for future database data: The main page has you able to upload an image onto the "timeline" and stores it in a local storage
 - and for now I added a clear image button that clears the timeline just to make it look clean for now
