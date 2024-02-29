@@ -59,7 +59,8 @@ a {
     display: block;
     margin-top: 10px;
     color: #6B0504;
-    text-decoration: none;
+    text-decoration: underline;
+    font-family: "Bebas Neue", sans-serif;
 }
 
 a:hover {
@@ -85,5 +86,17 @@ hr {
     font-style: normal;
   }
   
+#password {
+    font-family: sans-serif;
+}
+#big-name {
+    font-family: sans-serif;
+}
+#Login {
+    font-family: "Bebas Neue", sans-serif;
+}
+.text-reset {
+    font-family: "Bebas Neue", serif;
+}
   
   
