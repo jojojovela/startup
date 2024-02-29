@@ -47,6 +47,7 @@ JavaScript support for the application's interaction logic:
 - JavaScript support for future database data: The main page has you able to upload an image onto the "timeline" and stores it in a local storage
 - and for now I added a clear image button that clears the timeline just to make it look clean for now
 - JavaScript support for future WebSocket: when you click on an image that you upload and then navigate to the notifications tab you'll see a notification that says "{the image file name} has been voted"
+- so people are all looking at the timeline and seeing what others post and clicking on the images the like and then displaying a notification on the notifications page saying which image was voted on.
 - the notifications also has a clear notifications button that clears all of it out and makes it also look clean.
 - and the photos and notifications will stay on their pages while navigating between different tabs.
 
