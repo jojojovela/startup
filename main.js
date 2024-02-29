@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // mocked database data 
     let databaseData = [];
 
+    let storedImageData = JSON.parse(localStorage.getItem('imageData')) || [];
     // this reads the username from the localStorage
     const username = localStorage.getItem('username');
 
@@ -16,6 +17,10 @@ document.addEventListener('DOMContentLoaded', function () {
     // mocked data injection into the DOM
     // gets the imageGrid element from main.html
     const imageGrid = document.getElementById('imageGrid');
+
+    storedImageData.forEach(function (data) {
+        addDataToDatabaseAndDOM(data);
+    });
 
     // this is a function to add data to the mocked database and inser it into the DOM
     function addDataToDatabaseAndDOM(data) {
@@ -41,12 +46,22 @@ document.addEventListener('DOMContentLoaded', function () {
         const id = 'image' + data.id;
         img.setAttribute('id', id);
         img.onclick = () => {
-            handleImageClick(id);
+            handleImageClick(data);
         };
         // newImage.innerHTML = `<img src="${data.url}" alt="Uploaded Image" class="uploaded-image" id="image${data.id}" onclick="handleImageClick('image${data.id}')">`;
         newImage.appendChild(img);
         currentRow.appendChild(newImage);
     }
+    window.clearImages = function () {
+        // Clear the localStorage
+        localStorage.removeItem('imageData');
+
+        // Clear the imageGrid content
+        imageGrid.innerHTML = '';
+
+        // Clear the displayed images in the UI
+        databaseData = [];
+    };
 
     // this is a function to handle the images I want to upload.
     window.uploadImage = function () {
@@ -61,9 +76,13 @@ document.addEventListener('DOMContentLoaded', function () {
             // I am adding data to the mocked database and inserting it into the DOM
             // and it is also creating an object newData with properties id and url, storing the new ID and the 
             // URL created for the image.
-            const newData = { id: newId, url: newImageUrl };
+            const newData = { id: newId, url: newImageUrl, filename: fileInput.files[0].name };
             // calling the function and adds the new data which is the new ID and URL of the image
             // into the Database
+            storedImageData.push(newData);
+
+            // Save updated image data to localStorage
+            localStorage.setItem('imageData', JSON.stringify(storedImageData));
             addDataToDatabaseAndDOM(newData);
             if (clickedImageId === newData.id) {
                 sendNotificationToNotificationsPage("A photo has been clicked", newData.id);
@@ -71,26 +90,27 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             alert("Please choose a file to upload.");
         }
+        
     };
 
     // this is in charge of image click and sending notifications
-    function handleImageClick(imageId) {
+    function handleImageClick(imageData) {
         // this stores the imageId in the local storage under the key 'clickedImage'. 
         // It's saving information about the clicked image 
-        localStorage.setItem('clickedImage', imageId);
+        localStorage.setItem('clickedImage', imageData.id);
 
         // call function to send a message with imageId
-        sendNotificationToNotificationsPage("A photo has been voted", imageId);
+        sendNotificationToNotificationsPage(`${imageData.filename} has been voted on`, imageData);
     }
 
-    function sendNotificationToNotificationsPage(message, imageId) {
+    function sendNotificationToNotificationsPage(message, imageData) {
         // Get existing notifications from localStorage
         var notifications = JSON.parse(localStorage.getItem('notifications')) || [];
     
         // Add new notification
         notifications.push({
             message: message,
-            imageId: imageId
+            imageData: imageData
         });
     
         // Save notifications to localStorage
