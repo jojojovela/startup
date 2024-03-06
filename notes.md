@@ -166,8 +166,8 @@ Example:
   - function errorMiddlewareName(err, req, res, next)
 - If you wanted to add a simple error handler for anything that might go wrong while processing HTTP requests you could add the following.
   - app.use(function (err, req, res, next) {
-  res.status(500).send({type: err.name, message: err.message});
-});
+  - res.status(500).send({type: err.name, message: err.message});
+  - });
 
 
 
