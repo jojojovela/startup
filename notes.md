@@ -130,12 +130,20 @@ Example:
 - Primarily focuses on enhancing the communication and processing of requests and responses in a system. It's a layer that intercepts and acts upon data flowing between components.
 - Imagine a relay race: Middleware is like the relay baton. In a relay race, each runner passes the baton to the next one. Similarly, in software, middleware is a helper that handles tasks between different parts of a program. It can modify, log, or process information as it moves between components.
 - **Example:** Imagine a conveyor belt moving between different workers in a factory. Each worker (component) can add or modify something on the product (data), and the conveyor belt (middleware) ensures it reaches the next worker as intended.
+- Middleware functions are always called for every HTTP request unless a preceding middleware function does not call next.
+- A middleware function has the following pattern:
+ * function middlewareName(req, res, next)
+- The middleware function parameters represent the HTTP request object (req), the HTTP response object (res), and the next middleware function to pass processing to. You should usually call the next function after completing processing so that the next middleware function can execute.
+
 
 # Mediator
 - The Mediator pattern is a behavioral design pattern where an object (the mediator) centralizes communication between other objects (colleagues) without them needing to be directly aware of each other. It promotes loose coupling between components by having them communicate indirectly through a mediator.
 - Primarily focuses on managing communication and interaction between different objects or components in a way that reduces direct dependencies. It promotes a more loosely coupled architecture.
 - Imagine a group chat: In a group chat, people talk to each other without directly messaging everyone. Instead, they use a central chat room where messages are shared. The chat room is like a mediator, helping people communicate without knowing every individual.
 - **Example:** Think of different objects or parts of a program as people in a team. They don't talk directly but communicate through a shared mediator. This keeps them loosely connected, and changes in one part don't directly affect others.
+
+![image](https://github.com/jojojovela/startup/assets/156491273/cb58ce53-d0f0-43f3-ae1c-4dfb0ec2f6a9)
+
 
 
 
