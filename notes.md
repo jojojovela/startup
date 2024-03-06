@@ -37,9 +37,9 @@ For this deliverable I properly styled the application into its final appearance
  - Think of HTTP endpoints like specific destinations or addresses on the internet where you can do different things.
  - HTTP endpoints make it easy for different parts of the internet (websites, applications) to talk to each other and perform specific tasks by following a set of rules (HTTP protocol)
 
-app.get('/store/provo', (req, res, next) => {
-  res.send({name: 'provo'});
-});
+# app.get('/store/provo', (req, res, next) => {
+#  res.send({name: 'provo'});
+# });
 - code explanation, simple terms:
 - Imagine you have a website, and someone is asking for information about a store in Provo. This code is like a set of instructions for your website on how to respond to that request.
 
