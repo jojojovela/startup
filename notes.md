@@ -147,20 +147,16 @@ Example:
 # Built-in Middleware (Express)
 - When you use the express.static middleware with the "public" folder in your Express application, it allows you to share files on your website. Here's a step-by-step breakdown:
 1. Setup Middleware:
-- You include app.use(express.static('public')); in your Express application, telling it to use the express.static middleware for serving static files.
-Create a "public" Folder:
-
-You create a folder named "public" in your project directory.
-Place Files in "public" Folder:
-
-Inside the "public" folder, you can put files like index.html, styles.css, image.jpg, etc.
-Accessing Files:
-
-If your website is, for example, http://bananas.com, and you've set up the express.static middleware, people visiting your site will be able to see the files you placed in the "public" folder.
-Default Page:
-
-If there's an index.html file in the "public" folder, it becomes the default page that people see when they visit your site without specifying a specific file (e.g., http://bananas.com).
-So, you're using Express middleware to make it easy for others to access and view the files you want to share on your website. It simplifies the process of serving static content and makes your website's files accessible to visitors.
+   - You include app.use(express.static('public')); in your Express application, telling it to use the express.static middleware for serving static files.
+2. Create a "public" Folder:
+   - You create a folder named "public" in your project directory.
+3. Place Files in "public" Folder:
+   - Inside the "public" folder, you can put files like index.html, styles.css, image.jpg, etc.
+4. Accessing Files:
+   - If your website is, for example, http://bananas.com, and you've set up the express.static middleware, people visiting your site will be able to see the files you placed in the "public" folder.
+5. Default Page:
+   - If there's an index.html file in the "public" folder, it becomes the default page that people see when they visit your site without specifying a specific file (e.g., http://bananas.com).
+- So, you're using Express middleware to make it easy for others to access and view the files you want to share on your website. It simplifies the process of serving static content and makes your website's files accessible to visitors.
 
 
 
