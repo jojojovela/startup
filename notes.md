@@ -40,3 +40,18 @@ For this deliverable I properly styled the application into its final appearance
 app.get('/store/provo', (req, res, next) => {
   res.send({name: 'provo'});
 });
+- code explanation, simple terms:
+- Imagine you have a website, and someone is asking for information about a store in Provo. This code is like a set of instructions for your website on how to respond to that request.
+
+app.get('/store/provo', ...): This is saying, "Hey, if someone asks for the page at '/store/provo', do the following..."
+
+(req, res, next) => { ... }: When someone asks for '/store/provo', do the things inside these curly braces. The req is like a letter from the person asking for information, the res is like the letter you'll send back with the information, and next is a way to pass things to the next step (but we don't use it here).
+
+res.send({name: 'provo'});: This is like saying, "Okay, here's the information you wanted." It sends back a response to the person asking, and the information is a name ('provo').
+
+So, in super simple terms, if someone goes to your website and asks for the page '/store/provo', your website will respond with a message saying the name of the store is 'provo'.
+
+
+
+
+
