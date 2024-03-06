@@ -175,6 +175,11 @@ Example:
 - Now if we use curl to call our error endpoint we can see that the response comes from the error middleware:
   - ➜ curl localhost:8080/error
   - {"type":"Error","message":"Trouble in river city"}
+# const port = 8080;
+# app.listen(port, function () {
+#  console.log(`Listening on port ${port}`);
+# });
+## Listening to a Network Port
 
 
 
