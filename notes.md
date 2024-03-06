@@ -180,6 +180,15 @@ Example:
 ##  console.log(`Listening on port ${port}`);
 ## });
 ### Listening to a Network Port
+1. Setting the Port:
+   - const port = 8080;: This line declares a constant variable named port and sets its value to 8080. This is the port number on which your server will listen for incoming requests.
+2. Starting the Server:
+   - app.listen(port, function () { ... });: This line tells your Express application (app) to start listening for incoming requests on the specified port.
+3. Callback Function:
+   - The second argument to app.listen is a callback function. This function is executed once the server has successfully started and is ready to accept requests.
+4. Console Logging:
+   - console.log(Listening on port ${port});: Inside the callback function, this line logs a message to the console indicating that the server is now listening on the specified port.
+* In summary, this code configures an Express.js server to listen for incoming requests on port 8080 and prints a message to the console indicating that the server is now listening on that port. This is a common pattern you'll see when setting up a server with Express.js. *
 
 
 
