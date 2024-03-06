@@ -111,6 +111,14 @@ Example:
 - This route handles PUT requests and responds with a message saying it updated the store with the specified name.
 - The term "update" in this context means that some kind of modification or change is made to the store, but it doesn't explicitly specify what is being updated.
 
+# app.delete(/\/store\/(.+)/, (req, res) => res.send({delete: req.params[0]}));
+# Regular Expression Route
+- This route uses a more flexible pattern defined by a regular expression. It matches paths like "/store/something", capturing the "something" part as a parameter.
+- For example, it matches paths like "/store/abc" or "/store/123".
+- If you send a DELETE request to such a path, it responds with a message saying it deleted the store with the specified name.
+- This route handles DELETE requests and responds with a message saying it deleted the store with the specified name.
+- Similarly, the term "delete" here signifies some action, but it doesn't necessarily mean that a store is physically removed from some storage. It's more about indicating a conceptual deletion or removal.
+
 
 
 
