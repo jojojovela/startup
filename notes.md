@@ -65,10 +65,10 @@ For this deliverable I properly styled the application into its final appearance
 
 - So, if someone goes to '/store/myStore', your website will respond with a message saying the name of the store is 'myStore'. The :storeName part in the URL is like a placeholder for any store name someone might type after '/store/'.
 
-**localhost** - This is a special hostname that refers to the current machine or computer that you are using. It's often used to access services or websites running on the same machine. When you use localhost, you're essentially saying, "on this computer."
-**port number** - In the context of a web server, a port is like a door through which network traffic can pass. Port 8080 is a commonly used alternative to the default web server port (port 80). When you see localhost:8080, it means you are trying to access a service on your own machine using port 8080.
+- **localhost** - This is a special hostname that refers to the current machine or computer that you are using. It's often used to access services or websites running on the same machine. When you use localhost, you're essentially saying, "on this computer."
+- **port number** - In the context of a web server, a port is like a door through which network traffic can pass. Port 8080 is a commonly used alternative to the default web server port (port 80). When you see localhost:8080, it means you are trying to access a service on your own machine using port 8080.
 
-* In the context of the curl command you provided (curl localhost:8080/store/orem), it's telling curl to make an HTTP request to the server running on your computer at localhost (your computer) and on port 8080, specifically asking for information about the store named "orem" at the /store/ endpoint.
+- * In the context of the curl command you provided (curl localhost:8080/store/orem), it's telling curl to make an HTTP request to the server running on your computer at localhost (your computer) and on port 8080, specifically asking for information about the store named "orem" at the /store/ endpoint. *
 
 
 
