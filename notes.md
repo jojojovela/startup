@@ -51,6 +51,23 @@ For this deliverable I properly styled the application into its final appearance
 
  - So, in super simple terms, if someone goes to your website and asks for the page '/store/provo', your website will respond with a message saying the name of the store is 'provo'.
 
+# app.get('/store/:storeName', (req, res, next) => {
+#  res.send({name: req.params.storeName});
+# });
+- code explanation in simple terms
+- Think of this code as a way for your website to respond differently based on the store name someone asks about. Here's a breakdown:
+
+- app.get('/store/:storeName', ...): This part says, "If someone goes to a page like '/store/anything', pay attention."
+
+- (req, res, next) => { ... }: When someone goes to a page like '/store/anything', do the things inside these curly braces. req is like a letter from the person asking for information, res is like the letter you'll send back with the information, and next is a way to pass things to the next step (but we don't use it here).
+
+- res.send({name: req.params.storeName});: This is like saying, "Alright, you asked about a store, and whatever you put after '/store/' is the name of the store. I'll tell you that name." It sends back a response to the person asking, and the information is a JSON object with the name of the store they asked about.
+
+- So, if someone goes to '/store/myStore', your website will respond with a message saying the name of the store is 'myStore'. The :storeName part in the URL is like a placeholder for any store name someone might type after '/store/'.
+
+
+
+
 
 
 
