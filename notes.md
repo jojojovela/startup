@@ -83,16 +83,25 @@ Example:
 - Suppose you have multiple middleware functions, and each performs a specific task (logging, authentication, etc.). After one middleware finishes its task, it can call next(), allowing the next middleware to execute.
 # Next Parameter Example Code
   app.get('/example', (req, res, next) => {  
-  // Do something with the request
-  console.log('Middleware 1');
   
-  // Pass control to the next middleware
-  next();
-}, (req, res) => {
-  // This middleware will be executed next
-  console.log('Middleware 2');
-  res.send('Response from Middleware 2');
-});
+  // Do something with the request  
+  
+  console.log('Middleware 1');  
+  
+  // Pass control to the next middleware  
+  
+  next();  
+  
+}, (req, res) => {  
+
+  // This middleware will be executed next  
+  
+  console.log('Middleware 2');  
+  
+  res.send('Response from Middleware 2');  
+  
+});  
+
 
 
 
