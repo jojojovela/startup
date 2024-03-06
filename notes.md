@@ -146,8 +146,8 @@ Example:
 
 # Built-in Middleware (Express)
 - When you use the express.static middleware with the "public" folder in your Express application, it allows you to share files on your website. Here's a step-by-step breakdown:
-- Setup Middleware:
- * You include app.use(express.static('public')); in your Express application, telling it to use the express.static middleware for serving static files.
+1. Setup Middleware:
+- You include app.use(express.static('public')); in your Express application, telling it to use the express.static middleware for serving static files.
 Create a "public" Folder:
 
 You create a folder named "public" in your project directory.
