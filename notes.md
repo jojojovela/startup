@@ -118,6 +118,7 @@ Example:
 - If you send a DELETE request to such a path, it responds with a message saying it deleted the store with the specified name.
 - This route handles DELETE requests and responds with a message saying it deleted the store with the specified name.
 - Similarly, the term "delete" here signifies some action, but it doesn't necessarily mean that a store is physically removed from some storage. It's more about indicating a conceptual deletion or removal.
+- The server is not necessarily performing a physical deletion of some resource; rather, it's responding to a DELETE request by reporting that it processed the request and "deleted" something based on the client's input.
 - when you have req.params[0], it's accessing the content captured by the first (and only) capturing group in the regular expression. The index 0 represents the entire matched string, and subsequent indices (1, 2, etc.) would represent the content captured by individual capturing groups.
 - In simpler terms, if the URL is /store/something, then:
  - req.params[0] would contain "something" (the entire matched string).
