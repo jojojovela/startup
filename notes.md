@@ -161,6 +161,14 @@ Example:
 # Third Party Middleware
 - You can also use third party middleware functions by using NPM to install the package and including the package in your JavaScript with the require function.
 
+# Error Handling Middleware
+- You can also add middleware for handling errors that occur. Error middleware looks similar to other middleware functions, but it takes an additional err parameter that contains the error.
+  - function errorMiddlewareName(err, req, res, next)
+- If you wanted to add a simple error handler for anything that might go wrong while processing HTTP requests you could add the following.
+  - app.use(function (err, req, res, next) {
+  res.status(500).send({type: err.name, message: err.message});
+});
+
 
 
 
