@@ -31,3 +31,8 @@ For this deliverable I properly styled the application into its final appearance
   - Internet: Establishing connections
   - Transport: Moving connection information packets
   - Application: Functionality like web browsing
+
+ # HTTP Endpoints
+ - HTTP endpoints are specific URLs or URIs (Uniform Resource Identifiers) that web services or applications expose to enable communication with other systems over the Hypertext Transfer Protocol (HTTP). In simpler terms, an endpoint is a specific path or URL that is used to interact with a web service or API (Application Programming Interface).
+ - Think of HTTP endpoints like specific destinations or addresses on the internet where you can do different things.
+ - HTTP endpoints make it easy for different parts of the internet (websites, applications) to talk to each other and perform specific tasks by following a set of rules (HTTP protocol)
