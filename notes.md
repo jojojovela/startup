@@ -125,6 +125,17 @@ Example:
  - req.params[0] would contain "something" (the entire matched string).
  - req.params[1] would be undefined because there is only one capturing group.
 
+# Middleware
+- Middleware is a software layer that sits between different components or systems, facilitating communication, processing, or transformation of data. It's a piece of software that can intercept and process requests and responses as they travel between components.
+- Primarily focuses on enhancing the communication and processing of requests and responses in a system. It's a layer that intercepts and acts upon data flowing between components.
+- Imagine a relay race: Middleware is like the relay baton. In a relay race, each runner passes the baton to the next one. Similarly, in software, middleware is a helper that handles tasks between different parts of a program. It can modify, log, or process information as it moves between components.
+- **Example:** Imagine a conveyor belt moving between different workers in a factory. Each worker (component) can add or modify something on the product (data), and the conveyor belt (middleware) ensures it reaches the next worker as intended.
+
+# Mediator
+- The Mediator pattern is a behavioral design pattern where an object (the mediator) centralizes communication between other objects (colleagues) without them needing to be directly aware of each other. It promotes loose coupling between components by having them communicate indirectly through a mediator.
+- Primarily focuses on managing communication and interaction between different objects or components in a way that reduces direct dependencies. It promotes a more loosely coupled architecture.
+- Imagine a group chat: In a group chat, people talk to each other without directly messaging everyone. Instead, they use a central chat room where messages are shared. The chat room is like a mediator, helping people communicate without knowing every individual.
+- **Example:** Think of different objects or parts of a program as people in a team. They don't talk directly but communicate through a shared mediator. This keeps them loosely connected, and changes in one part don't directly affect others.
 
 
 
