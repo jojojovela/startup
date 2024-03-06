@@ -158,6 +158,8 @@ Example:
    - If there's an index.html file in the "public" folder, it becomes the default page that people see when they visit your site without specifying a specific file (e.g., http://bananas.com).
 - So, you're using Express middleware to make it easy for others to access and view the files you want to share on your website. It simplifies the process of serving static content and makes your website's files accessible to visitors.
 
+# Third Party Middleware
+- You can also use third party middleware functions by using NPM to install the package and including the package in your JavaScript with the require function.
 
 
 
