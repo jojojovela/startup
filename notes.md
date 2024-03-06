@@ -104,7 +104,7 @@ Example:
 
 
 # app.put('/st*/:storeName', (req, res) => res.send({update: req.params.storeName}));
-# Wildcard Route
+## Wildcard Route
 - This route matches paths that start with "/st" followed by anything (* means anything), and then it expects a store name as a parameter.
 - For example, it matches paths like "/store/x" or "/star/y".
 - If you send a PUT request to such a path, it responds with a message saying it updated the store with the specified name.
@@ -112,7 +112,7 @@ Example:
 - The term "update" in this context means that some kind of modification or change is made to the store, but it doesn't explicitly specify what is being updated.
 
 # app.delete(/\/store\/(.+)/, (req, res) => res.send({delete: req.params[0]}));
-# Regular Expression Route
+## Regular Expression Route
 - This route uses a more flexible pattern defined by a regular expression. It matches paths like "/store/something", capturing the "something" part as a parameter.
 - For example, it matches paths like "/store/abc" or "/store/123".
 - If you send a DELETE request to such a path, it responds with a message saying it deleted the store with the specified name.
