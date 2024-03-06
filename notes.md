@@ -65,6 +65,8 @@ For this deliverable I properly styled the application into its final appearance
 
 - So, if someone goes to '/store/myStore', your website will respond with a message saying the name of the store is 'myStore'. The :storeName part in the URL is like a placeholder for any store name someone might type after '/store/'.
 
+**localhost** - This is a special hostname that refers to the current machine or computer that you are using. It's often used to access services or websites running on the same machine. When you use localhost, you're essentially saying, "on this computer."
+
 
 
 
