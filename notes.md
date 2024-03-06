@@ -120,8 +120,8 @@ Example:
 - Similarly, the term "delete" here signifies some action, but it doesn't necessarily mean that a store is physically removed from some storage. It's more about indicating a conceptual deletion or removal.
 - when you have req.params[0], it's accessing the content captured by the first (and only) capturing group in the regular expression. The index 0 represents the entire matched string, and subsequent indices (1, 2, etc.) would represent the content captured by individual capturing groups.
 - In simpler terms, if the URL is /store/something, then:
- -req.params[0] would contain "something" (the entire matched string).
- -req.params[1] would be undefined because there is only one capturing group.
+ - req.params[0] would contain "something" (the entire matched string).
+ - req.params[1] would be undefined because there is only one capturing group.
 
 
 
