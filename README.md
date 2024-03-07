@@ -42,6 +42,15 @@ For this deliverable I properly styled the application into its final appearance
 - Application images - used sample images to portray how it would look and was able to curve the images as well to give more style
 
 # JavaScript Startup Deliverables
-For this deliev
+JavaScript support for the application's interaction logic:
+- make sure put your username and fill in a temporary password in the login page.
+- JavaScript support for future login: Able to  fix my footer and was able to get the username from login page to display on main page at the top left
+- JavaScript support for future database data: The main page has you able to upload an image onto the "timeline" and stores it in a local storage
+- you can add as many photos as you want and it will display the photos in three columns.
+- and for now I added a clear image button that clears the timeline just to make it look clean for now
+- JavaScript support for future WebSocket: when you click on an image that you upload and then navigate to the notifications tab you'll see a notification that says "{the image file name} has been voted"
+- so people are all looking at the timeline and seeing what others post and clicking on the images the like and then displaying a notification on the notifications page saying which image was voted on.
+- the notifications also has a clear notifications button that clears all of it out and makes it also look clean.
+- and the photos and notifications will stay on their pages while navigating between different tabs.
 
 
