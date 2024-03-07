@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
     storedImageData.forEach(function (data) {
         addDataToDatabaseAndDOM(data);
     });
+    
 
     // this is a function to add data to the mocked database and inser it into the DOM
     function addDataToDatabaseAndDOM(data) {
@@ -83,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Save updated image data to localStorage
             localStorage.setItem('imageData', JSON.stringify(storedImageData));
-            
+
             fetch('/api/uploadImage', {
                 method: 'POST',
                 headers: {
