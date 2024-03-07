@@ -121,8 +121,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.dispatchEvent(event);
     }
     
-    
-
     function sendNotification(message, imageId) {
         // grabs the existing notifications from the local storage 
         // or can start an empty array if there are none.

@@ -1,0 +1,15 @@
+{
+  "name": "startup",
+  "version": "1.0.0",
+  "description": "Photo Voter\r ### Elevator Pitcher\r Have you ever had trouble choosing a picture to post on social media. You look through\r all of them and painstakingly have to go through them one by one and look through the\r little details and see which ones you potentially like. You've narrowed it down to 10 pictures \r but that's still a lot. With Photo Voter you can upload those pictures and have your closest friends comment and vote on which they \r like the most. You look at the results and then you can quickly share that post directly to \r your social media like Instagram or Facebook.\r ### Sketches\r ![IMG_5699](https://github.com/jojojovela/startup/assets/156491273/69c22f48-543e-4296-be9b-b6087c65d5a5)\r ![IMG_5701](https://github.com/jojojovela/startup/assets/156491273/911b632a-d8a2-4a38-8ebb-16a0317be459)\r ### Key Features\r - Enhance image of pictures\r - Has number of votes of the picture above it\r - Be able to click on an image and have options (like to vote, comment, or share to social media)\r - Has notifications for when someone comments or votes on your pic\r - Being able to change your vote\r - Being able to upload pictures to application\r ### Technologies\r The following is how I will use the technologies:\r - HTML: I am going to have two webpages, one for login and one for the principal page. Images will be embeded, as well as an upload button, notifications tab, and the writing necessary for the website.\r - CSS: The applications styling using certain colors and texts that will elevate the look of the website. Be able to make the images uploded much more interesting to look at (maybe have some shading behind it, or have a border around each image etc.). Be able to space the images and borders pleasingly.\r - Javascript: The website will be able to have the user interact with the photo by being able to enhance, comment, vote or share their own uploaded photo. To be able to also click on the notifications tab to see your alerts.\r - Service:\r   - Being able to login\r   - Having the ability to vote\r   - Receiving notifications for votes\r   - Having votes be tallied for each photo\r   - Able to comment on pictures\r   - Share your picture\r - Authentication/DG/Login: Able to recognize and save users and votes in database. It will be able to register and login people. Also store comments in database.\r - Websocket: It will notify people when they had a vote on one of their images and when people comment.\r  # CSS Startup Deliverables\r For this deliverable I properly styled the application into its final appearance.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.3"
+  }
+}
