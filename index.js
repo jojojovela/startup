@@ -21,6 +21,7 @@ app.use(`/api`, apiRouter);
 apiRouter.post('/uploadImage', (req, res) => {
   const imageData = req.body;
   uploadedImages.push(imageData);
+  console.log("working")
 });
 
 
