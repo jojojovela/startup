@@ -10,9 +10,19 @@ app.use(express.json());
 // Serve up the front-end static content hosting
 app.use(express.static('public'));
 
+// Placeholder array to simulate a database of uploaded images
+let uploadedImages = [];
+
 // Router for service endpoints
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
+
+// uploadImage
+apiRouter.post('/uploadImage', (req, res) => {
+  const imageData = req.body;
+  uploadedImages.push(imageData);
+});
+
 
 // GetScores
 //apiRouter.get('/scores', (_req, res) => {

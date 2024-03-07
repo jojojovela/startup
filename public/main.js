@@ -83,6 +83,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Save updated image data to localStorage
             localStorage.setItem('imageData', JSON.stringify(storedImageData));
+            
+            fetch('/api/uploadImage', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newData),
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+
             addDataToDatabaseAndDOM(newData);
             if (clickedImageId === newData.id) {
                 sendNotificationToNotificationsPage("A photo has been clicked", newData.id);
