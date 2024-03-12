@@ -39,3 +39,25 @@ function clearNotifications() {
     loadNotifications();
 }
 
+function displayQuote() {
+    fetch('/getRandomQuote')  // Use the new endpoint on my server
+        .then((response) => response.json())
+        .then((data) => {
+            const containerEl = document.querySelector('#quote');
+
+            const quoteEl = document.createElement('p');
+            quoteEl.classList.add('quote');
+            const authorEl = document.createElement('p');
+            authorEl.classList.add('author');
+
+            quoteEl.textContent = data.content;
+            authorEl.textContent = data.author;
+
+            containerEl.appendChild(quoteEl);
+            containerEl.appendChild(authorEl);
+        })
+        .catch((error) => console.error('Error fetching quote:', error));
+}
+// Call this function wherever you want to display a quote
+displayQuote();
+

@@ -14,19 +14,18 @@ app.use(express.static('public'));
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
+app.get('/getRandomQuote', async (req, res) => {
+  try {
+      const quoteResponse = await fetch('https://api.quotable.io/random');
+      const quoteData = await quoteResponse.json();
 
-// GetScores
-//apiRouter.get('/scores', (_req, res) => {
-//  res.send(scores);
-//});
+      res.json(quoteData);
+  } catch (error) {
+      console.error('Error fetching quote:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
-// SubmitScore
-//apiRouter.post('/score', (req, res) => {
-//  scores = updateScores(req.body, scores);
-//  res.send(scores);
-//});
-
-// Return the application's default page if the path is unknown
 app.use((_req, res) => {
   res.sendFile('index.html', { root: 'public' });
 });
@@ -34,27 +33,3 @@ app.use((_req, res) => {
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
-
-// updateScores considers a new score for inclusion in the high scores.
-// The high scores are saved in memory and disappear whenever the service is restarted.
-// let scores = [];
-// function updateScores(newScore, scores) {
-//  let found = false;
-//  for (const [i, prevScore] of scores.entries()) {
-//    if (newScore.score > prevScore.score) {
-//      scores.splice(i, 0, newScore);
-//      found = true;
-//      break;
-//    }
-//  }
-
-//  if (!found) {
-//    scores.push(newScore);
-//  }
-
-//  if (scores.length > 10) {
-//    scores.length = 10;
-//  }
-
-//  return scores;
-//}
