@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
         newComment.className = 'comment';
         newComment.dataset.commentId = comment.id; // Add dataset attribute for identification
         newComment.innerHTML = `<p>${comment.comment}</p><button onclick="likeComment(${comment.id})">Like (${comment.likes})</button>`;
-        commentContainer.appendChild(newComment);
+        commentContainer.insertBefore(newComment, commentContainer.firstChild); // Prepend the new comment
     }
 
     window.likeComment = function (commentId) {
