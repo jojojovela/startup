@@ -9,7 +9,7 @@ body {
 }
 
 main {
-    max-width: 800px; /* Adjust the max-width to make the body wider */
+    max-width: 800px;
     margin: 50px auto;
     background-color: #E7E8D1;
     border-radius: 8px;
@@ -23,10 +23,10 @@ h1 {
 
 /* ... (rest of your CSS remains the same) ... */
 
-
 form {
     display: flex;
     flex-direction: column;
+    gap: 10px; /* Add some vertical space between elements */
 }
 
 label {
@@ -52,6 +52,10 @@ button {
 
 button:hover {
     background-color: lightcoral;
+}
+
+#CreateAccount {
+    margin-top: 10px; /* Add some space between Login and Create Account buttons */
 }
 
 a {
@@ -80,23 +84,26 @@ hr {
     background-color: #ccc;
     margin: 20px 0;
 }
+
 .bebas-neue-regular {
     font-family: "Bebas Neue", sans-serif;
     font-weight: 400;
     font-style: normal;
-  }
-  
+}
+
 #password {
     font-family: sans-serif;
 }
+
 #big-name {
     font-family: sans-serif;
 }
-#Login {
+
+#Login, #CreateAccount {
     font-family: "Bebas Neue", sans-serif;
+    width: 100%; /* Make buttons full-width */
 }
+
 .text-reset {
     font-family: "Bebas Neue", serif;
 }
-  
-  
