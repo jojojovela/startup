@@ -1,11 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // Event listener for the login form submission
   var loginForm = document.querySelector('form');
   if (loginForm) {
       loginForm.addEventListener('submit', function (event) {
-          event.preventDefault(); // Prevent the form from submitting in the traditional way
+          event.preventDefault();
 
-          // Read the username input value
           var usernameInput = document.getElementById('name');
           var username = usernameInput.value;
 

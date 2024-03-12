@@ -39,17 +39,3 @@ function clearNotifications() {
     loadNotifications();
 }
 
-function handleImageNotification(message) {
-    // this handles the notification for an image click
-    var notificationsContainer = document.getElementById('notificationsContainer');
-
-    var notificationElement = document.createElement('div');
-    notificationElement.className = 'notification';
-
-    var notificationText = document.createElement('p');
-    notificationText.textContent = message;
-
-    notificationElement.appendChild(notificationText);
-    notificationsContainer.appendChild(notificationElement);
-}
-

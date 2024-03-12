@@ -19,6 +19,7 @@ h1 {
     font-size: 50px;
     font-family: 'Bebas Neue';
 }
+
 p {
     font-family: "Bebas Neue", serif;
     color: #B85042;
@@ -41,6 +42,32 @@ th, td {
     text-align: center;
 }
 
+#commentInputContainer {
+    margin-bottom: 20px;
+}
+
+#commentInput {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #B85042;
+    color: #25171A;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: lightcoral;
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -60,23 +87,25 @@ hr {
     background-color: #B85042;
     margin: 20px 0;
 }
-.image-row {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px; 
-  }
-  
-  .uploaded-image {
-    max-width: 100%;
-    height: auto;
-    max-height: 250px; 
-    border-radius: 10px;
-    margin-bottom: 10px; 
-    cursor: pointer; 
-    transition: transform 0.2s ease-in-out; /* Add a smooth transition effect */
+
+.comment {
+    border: 1px solid #B85042;
+    background-color: #E7E8D1;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
 }
 
-.uploaded-image:hover {
-    transform: scale(1.1); /* Add a scale effect on hover */
+.comment p {
+    margin: 0;
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color: #B85042;
 }
 
+.bebas-neue-regular {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
