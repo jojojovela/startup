@@ -13,6 +13,7 @@ app.use(express.static('public'));
 // Router for service endpoints
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
+// In-memory array to simulate storing comments on the server
 let storedCommentData = [];
 
 app.get('/getRandomQuote', async (req, res) => {
