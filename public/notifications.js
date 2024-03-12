@@ -11,6 +11,15 @@ document.addEventListener('DOMContentLoaded', function () {
     loadNotifications();
 });
 
+function loadNotificationsFromServer() {
+    fetch('/api/getNotifications')
+        .then(response => response.json())
+        .then(notifications => {
+            updateNotifications(notifications);
+        })
+        .catch(error => console.error('Error fetching notifications:', error));
+}
+
 // function that loads the notifications
 function loadNotifications() {
     var notificationsContainer = document.getElementById('notificationsContainer');

@@ -66,6 +66,16 @@ app.post('/api/likeComment', async (req, res) => {
       res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+apiRouter.get('/getNotifications', (req, res) => {
+  try {
+    // Get existing notifications from localStorage
+    const notifications = JSON.parse(localStorage.getItem('notifications')) || [];
+    res.json(notifications);
+  } catch (error) {
+    console.error('Error retrieving notifications:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
 app.use((_req, res) => {
   res.sendFile('index.html', { root: 'public' });

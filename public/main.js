@@ -44,8 +44,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 .then(data => console.log('Comment submitted to server:', data))
                 .catch(error => console.error('Error submitting comment:', error));
 
-            // Send a notification for the submitted comment
-            sendNotificationToNotificationsPage("A new comment has been submitted", newData);
         } else {
             alert("Please enter a comment before submitting.");
         }
