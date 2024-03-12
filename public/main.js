@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
             alert("Please enter a comment before submitting.");
         }
     };
-    
+
     function getAllComments() {
         fetch('/api/getAllComments')
             .then(response => response.json())
@@ -95,6 +95,17 @@ document.addEventListener('DOMContentLoaded', function () {
             // Send a notification for the liked comment
             sendNotificationToNotificationsPage("A comment has been liked", comment);
         }
+        fetch('/api/likeComment', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ commentId }),
+        })
+            .then(response => response.json())
+            .then(updatedComment => console.log('Comment liked on server:', updatedComment))
+            .catch(error => console.error('Error liking comment on server:', error));
+        
     };
 
     // Function to clear all comments

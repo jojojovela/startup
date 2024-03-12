@@ -50,6 +50,22 @@ apiRouter.get('/getAllComments', (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+app.post('/api/likeComment', async (req, res) => {
+  try {
+      // Assuming your data is received in the request body
+      const { commentId } = req.body;
+
+      // Here you can process the commentId as needed, increment likes, save to a database, etc.
+      // For simplicity, let's just log it for now
+      console.log('Liked comment with ID:', commentId);
+
+      // Return the updated comment (you might want to send the updated likes count)
+      res.json({ commentId });
+  } catch (error) {
+      console.error('Error handling likeComment:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
 app.use((_req, res) => {
   res.sendFile('index.html', { root: 'public' });
