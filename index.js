@@ -76,6 +76,16 @@ apiRouter.get('/getNotifications', (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+apiRouter.post('/clearNotifications', (req, res) => {
+  try {
+    // Clear notifications on the server
+    storedNotifications = [];
+    res.status(200).json({ message: 'Notifications cleared successfully' });
+  } catch (error) {
+    console.error('Error clearing notifications:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
 app.use((_req, res) => {
   res.sendFile('index.html', { root: 'public' });

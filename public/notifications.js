@@ -41,12 +41,25 @@ function loadNotifications() {
 }
 
 function clearNotifications() {
-    // Clear all notifications from localStorage
-    localStorage.removeItem('notifications');
-
-    // Reload notifications
-    loadNotifications();
+    // Clear notifications on the server
+    fetch('/api/clearNotifications', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({}),
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Notifications cleared:', data.message);
+            // Clear all notifications from localStorage
+            localStorage.removeItem('notifications');
+            // Reload notifications
+            loadNotifications();
+        })
+        .catch(error => console.error('Error clearing notifications:', error));
 }
+
 
 function displayQuote() {
     fetch('/getRandomQuote')  // Use the new endpoint on my server
