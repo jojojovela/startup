@@ -62,4 +62,5 @@ JavaScript support for the application's interaction logic:
 - added a getNotifications endpoint
 - added a clearNotifications endpoint
 - and my frontend is calling all these service endpoints
+- Frontend served up using Express static middleware
 
