@@ -53,4 +53,14 @@ JavaScript support for the application's interaction logic:
 - the notifications also has a clear notifications button that clears all of it out and makes it also look clean.
 - and the photos and notifications will stay on their pages while navigating between different tabs.
 
+# Startup Service
+* changed my project to now instead of uploading images and being able to like it, to now being able to upload comments instead (no photos) and being able to like those, (just like twitter)
+- Added a third party endpoint that gets quotes and applies it into my notifications page
+- added a submitComment endpoint
+- added a getAllComments endpoint
+- added a likeComment endpoint
+- added a getNotifications endpoint
+- added a clearNotifications endpoint
+- and my frontend is calling all these service endpoints
+- Frontend served up using Express static middleware
 
