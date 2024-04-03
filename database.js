@@ -40,4 +40,8 @@ async function createUser(email, password) {
   return user;
 }
 
-module.exports = { addScore, getHighScores };
+module.exports = {
+  getUser,
+  getUserByToken,
+  createUser
+}

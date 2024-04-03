@@ -1,4 +1,5 @@
 const express = require('express');
+const { userCollection } = require('./database');
 const app = express();
 const bcrypt = require('bcrypt');
 const { v4: uuidv4 } = require('uuid');
