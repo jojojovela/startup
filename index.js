@@ -42,8 +42,8 @@ app.post('/api/auth/login', async (req, res) => {
   }
 
   const authToken = uuidv4();
-  await userCollection.updateOne({ username }, { $set: { authToken } });
-
+  await db.collection('user').updateOne({ username }, { $set: { authToken } })
+  
   res.cookie('token', authToken, {
     secure: true,
     httpOnly: true,

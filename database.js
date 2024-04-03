@@ -6,48 +6,37 @@ const config = require('./dbConfig.json');
 const url = `mongodb+srv://${config.username}:${config.password}@${config.hostname}`;
 const client = new MongoClient(url);
 let db;
-let userCollection;
 
 async function connectDB() {
-  await client.connect();
-  db = client.db('startup');
-  userCollection = db.collection('user');
+  try {
+    await client.connect();
+    db = client.db('startup');
+    console.log('Connected to MongoDB');
+  } catch (ex) {
+    console.error('Unable to connect to database:', ex.message);
+    throw ex;
+  }
 }
 
-// This will asynchronously test the connection and exit the process if it fails
-(async function testConnection() {
-  await client.connect();
-  await db.command({ ping: 1 });
-})().catch((ex) => {
-  console.log(`Unable to connect to database with ${url} because ${ex.message}`);
-  process.exit(1);
-});
-
-function getUser(user) {
-  return userCollection.findOne({ email: user });
+function getUser(username) {
+  return db.collection('user').findOne({ username });
 }
 
 function getUserByToken(token) {
-  return userCollection.findOne({ token: token });
+  return db.collection('user').findOne({ token });
 }
 
 async function createUser(email, password) {
-  // Hash the password before we insert it into the database
   const passwordHash = await bcrypt.hash(password, 10);
 
   const user = {
-    email: email,
+    username: email,
     password: passwordHash,
     token: uuid.v4(),
   };
-  await userCollection.insertOne(user);
+  await db.collection('user').insertOne(user);
 
   return user;
 }
 
-module.exports = {
-  connectDB,
-  getUser,
-  getUserByToken,
-  createUser
-}
+module.exports = { connectDB, getUser, getUserByToken, createUser };
