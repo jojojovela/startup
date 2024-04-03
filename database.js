@@ -26,8 +26,7 @@ function getUserByToken(token) {
   return db.collection('user').findOne({ token });
 }
 
-async function createUser(email, password) {
-  const passwordHash = await bcrypt.hash(password, 10);
+async function createUser(email, passwordHash) {
 
   const user = {
     username: email,

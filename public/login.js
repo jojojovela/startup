@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
           })
           .then(data => {
               console.log('Login response:', data);
-              // Redirect to the main page if login is successful
+              localStorage.setItem('username', username);
               window.location.href = 'main.html';
           })
           .catch(error => {
@@ -37,7 +37,34 @@ document.addEventListener('DOMContentLoaded', function () {
       if (createAccountBtn) {
           createAccountBtn.addEventListener('click', function (event) {
               event.preventDefault();
-              window.location.href = 'create_account.html';
+              console.log("Creating account");
+
+              var usernameInput = document.getElementById('username');
+              var passwordInput = document.getElementById('passwordInput');
+              var username = usernameInput.value;
+              var password = passwordInput.value;
+
+              fetch('/api/auth/createAccount', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({ username: username, password: password }),
+              })
+              .then(response => {
+                  if (!response.ok) {
+                      throw new Error('Network response was not ok');
+                  }
+                  return response.json();
+              })
+              .then(data => {
+                  console.log('Account created:', data);
+                  // You can add a success message or handle the response as needed
+              })
+              .catch(error => {
+                  console.error('Error creating account:', error);
+                  alert('Account creation failed. Please try again.');
+              });
           });
       }
   }

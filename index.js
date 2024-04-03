@@ -3,7 +3,7 @@ const { connectDB, getUser, getUserByToken, createUser } = require('./database')
 const app = express();
 const bcrypt = require('bcrypt');
 const { v4: uuidv4 } = require('uuid');
-
+const authCookieName = 'token';
 // The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
@@ -27,29 +27,53 @@ app.use(`/api`, apiRouter);
 // In-memory array to simulate storing comments on the server
 let storedCommentData = [];
 
-// Login endpoint
-app.post('/api/auth/login', async (req, res) => {
+app.post('/api/auth/createAccount', async (req, res) => {
   const { username, password } = req.body;
-  const user = await getUser(username);
 
-  if (!user) {
-    return res.status(401).send({ msg: 'Invalid username or password' });
+  // Check if the username already exists
+  const existingUser = await getUser(username);
+  if (existingUser) {
+    return res.status(400).send({ msg: 'Username already exists' });
   }
+  console.log("before hash")
+  // Hash the password before saving to the database
+  const hashedPassword = await bcrypt.hash(password, 10);
+  console.log("passed hash")
 
-  const passwordMatch = await bcrypt.compare(password, user.password);
-  if (!passwordMatch) {
-    return res.status(401).send({ msg: 'Invalid username or password' });
+  // Save the new user to the database
+  await createUser(username, hashedPassword);
+
+  res.status(201).send({ msg: 'Account created successfully' });
+});
+
+apiRouter.post('/auth/login', async (req, res) => {
+  console.log(req.body)
+  const user = await getUser(req.body.username);
+  if (user) {
+    if (await bcrypt.compare(req.body.password, user.password)) {
+      setAuthCookie(res, user.token);
+      res.send({ id: user._id });
+      return;
+    }
   }
+  res.status(401).send({ msg: 'Unauthorized' });
+});
 
-  const authToken = uuidv4();
-  await db.collection('user').updateOne({ username }, { $set: { authToken } })
-  
-  res.cookie('token', authToken, {
-    secure: true,
-    httpOnly: true,
-    sameSite: 'strict',
-  });
-  res.send({ id: user._id, username: user.username });
+// DeleteAuth token if stored in cookie
+apiRouter.delete('/auth/logout', (_req, res) => {
+  res.clearCookie(authCookieName);
+  res.status(204).end();
+});
+
+// GetUser returns information about a user
+apiRouter.get('/user/:email', async (req, res) => {
+  const user = await getUser(req.params.username);
+  if (user) {
+    const token = req?.cookies.token;
+    res.send({ username: user.username, authenticated: token === user.token });
+    return;
+  }
+  res.status(404).send({ msg: 'Unknown' });
 });
 
 app.get('/getRandomQuote', async (req, res) => {
@@ -126,6 +150,14 @@ apiRouter.post('/clearNotifications', (req, res) => {
 app.use((_req, res) => {
   res.sendFile('index.html', { root: 'public' });
 });
+
+function setAuthCookie(res, authToken) {
+  res.cookie(authCookieName, authToken, {
+    secure: true,
+    httpOnly: true,
+    sameSite: 'strict',
+  });
+}
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
