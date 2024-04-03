@@ -5,9 +5,14 @@ const config = require('./dbConfig.json');
 
 const url = `mongodb+srv://${config.username}:${config.password}@${config.hostname}`;
 const client = new MongoClient(url);
-const db = client.db('startup');
-const userCollection = db.collection('user');
+let db;
+let userCollection;
 
+async function connectDB() {
+  await client.connect();
+  db = client.db('startup');
+  userCollection = db.collection('user');
+}
 
 // This will asynchronously test the connection and exit the process if it fails
 (async function testConnection() {
@@ -41,6 +46,7 @@ async function createUser(email, password) {
 }
 
 module.exports = {
+  connectDB,
   getUser,
   getUserByToken,
   createUser

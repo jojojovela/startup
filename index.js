@@ -1,5 +1,5 @@
 const express = require('express');
-const { userCollection } = require('./database');
+const { connectDB, getUser, getUserByToken, createUser } = require('./database');
 const app = express();
 const bcrypt = require('bcrypt');
 const { v4: uuidv4 } = require('uuid');
@@ -13,6 +13,14 @@ app.use(express.json());
 // Serve up the front-end static content hosting
 app.use(express.static('public'));
 
+// Connect to the database
+connectDB().then(() => {
+  console.log('Connected to MongoDB');
+}).catch((ex) => {
+  console.error('Unable to connect to database:', ex.message);
+  process.exit(1);
+});
+
 // Router for service endpoints
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
@@ -22,7 +30,7 @@ let storedCommentData = [];
 // Login endpoint
 app.post('/api/auth/login', async (req, res) => {
   const { username, password } = req.body;
-  const user = await userCollection.findOne({ username });
+  const user = await getUser(username);
 
   if (!user) {
     return res.status(401).send({ msg: 'Invalid username or password' });
