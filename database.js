@@ -1,10 +1,13 @@
 const { MongoClient } = require('mongodb');
+const bcrypt = require('bcrypt');
+const uuid = require('uuid');
 const config = require('./dbConfig.json');
 
 const url = `mongodb+srv://${config.username}:${config.password}@${config.hostname}`;
 const client = new MongoClient(url);
-const db = client.db('simon');
-const scoreCollection = db.collection('score');
+const db = client.db('startup');
+const userCollection = db.collection('user');
+
 
 // This will asynchronously test the connection and exit the process if it fails
 (async function testConnection() {
@@ -15,19 +18,26 @@ const scoreCollection = db.collection('score');
   process.exit(1);
 });
 
-async function addScore(score) {
-  const result = await scoreCollection.insertOne(score);
-  return result;
+function getUser(user) {
+  return userCollection.findOne({ email: user });
 }
 
-function getHighScores() {
-  const query = { score: { $gt: 0, $lt: 900 } };
-  const options = {
-    sort: { score: -1 },
-    limit: 10,
+function getUserByToken(token) {
+  return userCollection.findOne({ token: token });
+}
+
+async function createUser(email, password) {
+  // Hash the password before we insert it into the database
+  const passwordHash = await bcrypt.hash(password, 10);
+
+  const user = {
+    email: email,
+    password: passwordHash,
+    token: uuid.v4(),
   };
-  const cursor = scoreCollection.find(query, options);
-  return cursor.toArray();
+  await userCollection.insertOne(user);
+
+  return user;
 }
 
 module.exports = { addScore, getHighScores };

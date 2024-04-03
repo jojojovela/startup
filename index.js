@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const bcrypt = require('bcrypt');
+const { v4: uuidv4 } = require('uuid');
 
 // The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
@@ -15,6 +17,31 @@ var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 // In-memory array to simulate storing comments on the server
 let storedCommentData = [];
+
+// Login endpoint
+app.post('/api/auth/login', async (req, res) => {
+  const { username, password } = req.body;
+  const user = await userCollection.findOne({ username });
+
+  if (!user) {
+    return res.status(401).send({ msg: 'Invalid username or password' });
+  }
+
+  const passwordMatch = await bcrypt.compare(password, user.password);
+  if (!passwordMatch) {
+    return res.status(401).send({ msg: 'Invalid username or password' });
+  }
+
+  const authToken = uuidv4();
+  await userCollection.updateOne({ username }, { $set: { authToken } });
+
+  res.cookie('token', authToken, {
+    secure: true,
+    httpOnly: true,
+    sameSite: 'strict',
+  });
+  res.send({ id: user._id, username: user.username });
+});
 
 app.get('/getRandomQuote', async (req, res) => {
   try {
