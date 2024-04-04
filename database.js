@@ -26,6 +26,14 @@ function getUserByToken(token) {
   return db.collection('user').findOne({ token });
 }
 
+async function insertComment(commentData) {
+  await db.collection('comments').insertOne(commentData);
+}
+
+async function getAllComments() {
+  return db.collection('comments').find({}).toArray();
+}
+
 async function createUser(email, passwordHash) {
 
   const user = {
@@ -38,4 +46,4 @@ async function createUser(email, passwordHash) {
   return user;
 }
 
-module.exports = { connectDB, getUser, getUserByToken, createUser };
+module.exports = { connectDB, getUser, getUserByToken, createUser, insertComment, getAllComments };

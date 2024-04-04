@@ -90,21 +90,22 @@ app.get('/getRandomQuote', async (req, res) => {
 
 apiRouter.post('/submitComment', async (req, res) => {
   try {
-      // Assuming your data is received in the request body
-      const commentData = req.body;
+    const commentData = req.body;
 
-      // Here you can process the commentData as needed, save it to a database, etc.
-      // For simplicity, let's just log it for now
-      console.log('Received comment:', commentData);
+    // Assuming you have a collection named 'comments' in your MongoDB database
+    const result = await db.collection('comments').insertOne(commentData);
 
+    console.log('Comment saved successfully:', result.insertedId);
+    res.status(201).send({ msg: 'Comment saved successfully' });
   } catch (error) {
-      console.error('Error handling comment submission:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
+    console.error('Error saving comment:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-apiRouter.get('/getAllComments', (req, res) => {
+apiRouter.get('/getAllComments', async (req, res) => {
   try {
-    res.json(storedCommentData);
+    const comments = await db.collection('comments').find({}).toArray();
+    res.json(comments);
   } catch (error) {
     console.error('Error retrieving comments:', error);
     res.status(500).json({ error: 'Internal Server Error' });
