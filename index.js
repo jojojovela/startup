@@ -1,5 +1,6 @@
+const cookieParser = require("cookie-parser")
 const express = require('express');
-const { connectDB, getUser, getUserByToken, createUser } = require('./database');
+const db = require('./database');
 const app = express();
 const bcrypt = require('bcrypt');
 const { v4: uuidv4 } = require('uuid');
@@ -10,11 +11,13 @@ const port = process.argv.length > 2 ? process.argv[2] : 4000;
 // JSON body parsing using built-in middleware
 app.use(express.json());
 
+app.use(cookieParser())
+
 // Serve up the front-end static content hosting
 app.use(express.static('public'));
 
 // Connect to the database
-connectDB().then(() => {
+db.connectDB().then(() => {
   console.log('Connected to MongoDB');
 }).catch((ex) => {
   console.error('Unable to connect to database:', ex.message);
@@ -26,6 +29,7 @@ var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 // In-memory array to simulate storing comments on the server
 let storedCommentData = [];
+
 
 app.post('/api/auth/createAccount', async (req, res) => {
   const { username, password } = req.body;
@@ -48,7 +52,7 @@ app.post('/api/auth/createAccount', async (req, res) => {
 
 apiRouter.post('/auth/login', async (req, res) => {
   console.log(req.body)
-  const user = await getUser(req.body.username);
+  const user = await db.getUser(req.body.username);
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
       setAuthCookie(res, user.token);
@@ -76,7 +80,21 @@ apiRouter.get('/user/:email', async (req, res) => {
   res.status(404).send({ msg: 'Unknown' });
 });
 
-app.get('/getRandomQuote', async (req, res) => {
+// secureApiRouter verifies credentials for endpoints
+var secureApiRouter = express.Router();
+apiRouter.use(secureApiRouter);
+
+secureApiRouter.use(async (req, res, next) => {
+  authToken = req.cookies[authCookieName];
+  const user = await db.getUserByToken(authToken);
+  if (user) {
+    next();
+  } else {
+    res.status(401).send({ msg: 'Unauthorized' });
+  }
+});
+
+secureApiRouter.get('/getRandomQuote', async (req, res) => {
   try {
       const quoteResponse = await fetch('https://api.quotable.io/random');
       const quoteData = await quoteResponse.json();
@@ -88,30 +106,29 @@ app.get('/getRandomQuote', async (req, res) => {
   }
 });
 
-apiRouter.post('/submitComment', async (req, res) => {
+secureApiRouter.post('/submitComment', async (req, res) => {
   try {
     const commentData = req.body;
 
     // Assuming you have a collection named 'comments' in your MongoDB database
-    const result = await db.collection('comments').insertOne(commentData);
+    await db.insertComment(commentData);
 
-    console.log('Comment saved successfully:', result.insertedId);
     res.status(201).send({ msg: 'Comment saved successfully' });
   } catch (error) {
     console.error('Error saving comment:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-apiRouter.get('/getAllComments', async (req, res) => {
+secureApiRouter.get('/getAllComments', async (req, res) => {
   try {
-    const comments = await db.collection('comments').find({}).toArray();
+    const comments = await db.getAllComments();
     res.json(comments);
   } catch (error) {
     console.error('Error retrieving comments:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-app.post('/api/likeComment', async (req, res) => {
+secureApiRouter.post('/api/likeComment', async (req, res) => {
   try {
       // Assuming your data is received in the request body
       const { commentId } = req.body;
@@ -127,7 +144,7 @@ app.post('/api/likeComment', async (req, res) => {
       res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-apiRouter.get('/getNotifications', (req, res) => {
+secureApiRouter.get('/getNotifications', (req, res) => {
   try {
     // Get existing notifications from localStorage
     const notifications = JSON.parse(localStorage.getItem('notifications')) || [];
@@ -137,7 +154,7 @@ apiRouter.get('/getNotifications', (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-apiRouter.post('/clearNotifications', (req, res) => {
+secureApiRouter.post('/clearNotifications', (req, res) => {
   try {
     // Clear notifications on the server
     storedNotifications = [];

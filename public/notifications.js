@@ -62,7 +62,7 @@ function clearNotifications() {
 
 
 function displayQuote() {
-    fetch('/getRandomQuote')  // Use the new endpoint on my server
+    fetch('/api/getRandomQuote')  // Use the new endpoint on my server
         .then((response) => response.json())
         .then((data) => {
             const containerEl = document.querySelector('#quote');

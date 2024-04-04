@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    let storedCommentData = JSON.parse(localStorage.getItem('commentData')) || [];
+    // let storedCommentData = JSON.parse(localStorage.getItem('commentData')) || [];
     // Retrieve the username from localStorage
     const username = localStorage.getItem('username');
     // Display the username on the main page
@@ -10,9 +10,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
     // Display existing comments on page load
-    storedCommentData.forEach(function (comment) {
-        addCommentToDOM(comment);
-    });
+    // storedCommentData.forEach(function (comment) {
+    //     addCommentToDOM(comment);
+    // });
     window.submitComment = function () {
         const commentInput = document.getElementById("commentInput");
 
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
             storedCommentData.push(newData);
 
             // Save updated comment data to localStorage
-            localStorage.setItem('commentData', JSON.stringify(storedCommentData));
+            // localStorage.setItem('commentData', JSON.stringify(storedCommentData));
 
             // Display the new comment on the page
             addCommentToDOM(newData);
@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => response.json())
             .then(comments => {
                 // Display each comment on the page
+                storedCommentData = comments
                 comments.forEach(comment => addCommentToDOM(comment));
             })
             .catch(error => console.error('Error fetching comments:', error));
