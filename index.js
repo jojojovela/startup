@@ -31,11 +31,11 @@ app.use(`/api`, apiRouter);
 let storedCommentData = [];
 
 
-app.post('/api/auth/createAccount', async (req, res) => {
+apiRouter.post('/auth/createAccount', async (req, res) => {
   const { username, password } = req.body;
 
   // Check if the username already exists
-  const existingUser = await getUser(username);
+  const existingUser = await db.getUser(username);
   if (existingUser) {
     return res.status(400).send({ msg: 'Username already exists' });
   }
@@ -45,7 +45,7 @@ app.post('/api/auth/createAccount', async (req, res) => {
   console.log("passed hash")
 
   // Save the new user to the database
-  await createUser(username, hashedPassword);
+  await db.createUser(username, hashedPassword);
 
   res.status(201).send({ msg: 'Account created successfully' });
 });
