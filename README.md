@@ -64,3 +64,10 @@ JavaScript support for the application's interaction logic:
 - and my frontend is calling all these service endpoints
 - Frontend served up using Express static middleware
 
+# Startup Login
+- you cannot log in without creating an account so make sure you make your own username and password and then click create account
+- then you can click log in and will navigate you to the main page where you can submit a comment and like the comment
+- when you do that it is received in the database and correlates to the username and password used for it
+- basically it is keeping "score" of your comment and your likes in the database
+- endpoints work correctly
+
