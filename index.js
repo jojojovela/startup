@@ -4,6 +4,7 @@ const db = require('./database');
 const app = express();
 const bcrypt = require('bcrypt');
 const { v4: uuidv4 } = require('uuid');
+const { peerProxy } = require('./peerProxy.js');
 const authCookieName = 'token';
 // The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
@@ -177,6 +178,8 @@ function setAuthCookie(res, authToken) {
   });
 }
 
-app.listen(port, () => {
+const httpService = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
+peerProxy(httpService);
