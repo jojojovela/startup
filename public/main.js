@@ -8,21 +8,18 @@ document.addEventListener('DOMContentLoaded', function () {
         if (usernameDisplay) {
             usernameDisplay.textContent = `Logged in as: ${username}`;
         }
+        app.configureWebSocket()
     }
-    // Display existing comments on page load
-    // storedCommentData.forEach(function (comment) {
-    //     addCommentToDOM(comment);
-    // });
+    
     window.submitComment = function () {
         const commentInput = document.getElementById("commentInput");
-
         if (commentInput.value.trim() !== "") {
             // increments it by 1 to uniquely identify the new comment being uploaded
             const newId = storedCommentData.length + 1;
             // I am adding data to the mocked database and inserting it into the DOM
-            const newData = { id: newId, comment: commentInput.value.trim(), likes: 0 };
+            const newData = { id: newId, comment: commentInput.value.trim(), likes: 0};
             storedCommentData.push(newData);
-
+            app.broadcastEvent(newData);
             // Save updated comment data to localStorage
             // localStorage.setItem('commentData', JSON.stringify(storedCommentData));
 
@@ -31,6 +28,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Clear the comment input field after submission
             commentInput.value = "";
+            // Send comment data over WebSocket
+
 
             // Submit the comment to the server
             fetch('/api/submitComment', {
@@ -139,4 +138,35 @@ document.addEventListener('DOMContentLoaded', function () {
         const event = new Event('notificationEvent');
         document.dispatchEvent(event);
     }
+    app.configureWebSocket();
 });
+
+const app = {
+    configureWebSocket() {
+      const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+      this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+      this.socket.onmessage = async (event) => {
+        const data = JSON.parse(await event.data.text());
+        this.addCommentToDOM(data);
+      };
+    },
+    
+    displayMsg(cls, from, msg) {
+      const chatText = document.querySelector('#player-messages');
+      chatText.innerHTML =
+        `<div class="event"><span class="${cls}-event">${from}</span> ${msg}</div>` + chatText.innerHTML;
+    },
+    
+    broadcastEvent(data) {
+      this.socket.send(JSON.stringify(data));
+    },
+  
+    addCommentToDOM(comment) {
+      const commentContainer = document.getElementById('commentContainer');
+      const newComment = document.createElement('div');
+      newComment.className = 'comment';
+      newComment.dataset.commentId = comment.id; // Add dataset attribute for identification
+      newComment.innerHTML = `<p>${comment.comment}</p><button onclick="likeComment(${comment.id})">Like (${comment.likes})</button>`;
+      commentContainer.appendChild(newComment);
+    }
+  };

@@ -25,6 +25,7 @@ db.connectDB().then(() => {
   process.exit(1);
 });
 
+
 // Router for service endpoints
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
