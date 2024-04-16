@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // localStorage.setItem('commentData', JSON.stringify(storedCommentData));
 
             // Display the new comment on the page
-            addCommentToDOM(newData);
+            // addCommentToDOM(newData);
 
             // Clear the comment input field after submission
             commentInput.value = "";
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(comments => {
                 // Display each comment on the page
                 storedCommentData = comments
-                comments.forEach(comment => addCommentToDOM(comment));
+                //comments.forEach(comment => addCommentToDOM(comment));
             })
             .catch(error => console.error('Error fetching comments:', error));
     }
@@ -63,14 +63,6 @@ document.addEventListener('DOMContentLoaded', function () {
     getAllComments();
 
     // Function to add comments to the DOM
-    function addCommentToDOM(comment) {
-        const commentContainer = document.getElementById('commentContainer');
-        const newComment = document.createElement('div');
-        newComment.className = 'comment';
-        newComment.dataset.commentId = comment.id; // Add dataset attribute for identification
-        newComment.innerHTML = `<p>${comment.comment}</p><button onclick="likeComment(${comment.id})">Like (${comment.likes})</button>`;
-        commentContainer.appendChild(newComment);
-    }
 
     window.likeComment = function (commentId) {
         const comment = storedCommentData.find(comment => comment.id === commentId);
@@ -138,23 +130,17 @@ document.addEventListener('DOMContentLoaded', function () {
         const event = new Event('notificationEvent');
         document.dispatchEvent(event);
     }
-    app.configureWebSocket();
 });
 
 const app = {
     configureWebSocket() {
       const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
       this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+      console.log("created new socket")
       this.socket.onmessage = async (event) => {
         const data = JSON.parse(await event.data.text());
         this.addCommentToDOM(data);
       };
-    },
-    
-    displayMsg(cls, from, msg) {
-      const chatText = document.querySelector('#player-messages');
-      chatText.innerHTML =
-        `<div class="event"><span class="${cls}-event">${from}</span> ${msg}</div>` + chatText.innerHTML;
     },
     
     broadcastEvent(data) {
@@ -162,6 +148,7 @@ const app = {
     },
   
     addCommentToDOM(comment) {
+      console.log("add comment to DOM")
       const commentContainer = document.getElementById('commentContainer');
       const newComment = document.createElement('div');
       newComment.className = 'comment';
