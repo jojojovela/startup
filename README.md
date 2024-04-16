@@ -72,3 +72,11 @@ JavaScript support for the application's interaction logic:
 - basically it is keeping "score" of your comment and your likes in the database
 - endpoints work correctly
 
+# Startup Websocket
+- Backend listens for WebSocket connection
+- Frontend makes WebSocket connection
+- Data sent over WebSocket connection.
+- When you create an account and then log in with the account, you can submit a comment and in real time
+have a connecttion with other clients that are logged in as well
+- WebSocket data displayed in the application interface. When you submit the comment it is displayed on the timeline.
+
